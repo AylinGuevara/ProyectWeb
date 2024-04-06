@@ -166,6 +166,7 @@
     <Compile Include="Models\CondicionPago.cs" />
     <Compile Include="Models\GrupoDescuento.cs" />
     <Compile Include="Models\Pedido.cs" />
+    <Compile Include="Models\PedidoDetalle.cs" />
     <Compile Include="Models\Producto.cs" />
     <Compile Include="Models\UnidadMedida.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

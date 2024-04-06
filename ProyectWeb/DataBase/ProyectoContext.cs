@@ -32,5 +32,11 @@ namespace ProyectWeb.DataBase
         public DbSet<UnidadMedida> UnidadMedida { get; set; }
         public DbSet<Producto> Producto { get; set; }
         public DbSet<Pedido> Pedido { get; set; }
+        public DbSet<PedidoDetalle> PedidoDetalle { get; set; }
+
+
+
+
+
     }
 }
