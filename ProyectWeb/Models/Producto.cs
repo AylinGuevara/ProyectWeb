@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -12,10 +14,10 @@ namespace ProyectWeb.Models
         public int ProductoId { get; set; }
 
         [ForeignKey("CategoriaId")]
-        public int CategoriaId { get; set; }
+        public Categoria Categoria { get; set; }
 
         [ForeignKey("UnidadMedidaId")]
-        public int UnidadMedidaId { get; set; }
+        public UnidadMedida UnidadMedida { get; set; }
 
         public DateTime FechaCreacion { get; set; }
 
