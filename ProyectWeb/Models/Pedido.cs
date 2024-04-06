@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -13,9 +15,8 @@ namespace ProyectWeb.Models
 
         public int ClienteId { get; set; }
        
-        [ForeignKey("ClienteIdId")]
+        [ForeignKey("ClienteId")]
         public Cliente Cliente { get; set; }
-
 
         public DateTime FechaCreacion{ get; set; }
 
