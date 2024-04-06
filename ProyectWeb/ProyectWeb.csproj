@@ -173,6 +173,7 @@
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\CondicionPago.cs" />
     <Compile Include="Models\Factura.cs" />
+    <Compile Include="Models\FacturaDetalle.cs" />
     <Compile Include="Models\GrupoDescuento.cs" />
     <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\PedidoDetalle.cs" />
