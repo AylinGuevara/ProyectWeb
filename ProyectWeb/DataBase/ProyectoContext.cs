@@ -31,5 +31,6 @@ namespace ProyectWeb.DataBase
         public DbSet<GrupoDescuento> GrupoDescuento { get; set; }
         public DbSet<UnidadMedida> UnidadMedida { get; set; }
         public DbSet<Producto> Producto { get; set; }
+        public DbSet<Pedido> Pedido { get; set; }
     }
 }
