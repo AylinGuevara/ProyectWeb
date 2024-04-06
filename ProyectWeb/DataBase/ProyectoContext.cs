@@ -29,5 +29,6 @@ namespace ProyectWeb.DataBase
         public DbSet<CondicionPago> CondicionPago { get; set; }
 
         public DbSet<GrupoDescuento> GrupoDescuento { get; set; }
+        public DbSet<UnidadMedida> UnidadMedida { get; set; }
     }
 }
