@@ -13,11 +13,15 @@ namespace ProyectWeb.Models
         [Key]
         public int ProductoId { get; set; }
 
+        public int CategoriaId { get; set; }
+
         [ForeignKey("CategoriaId")]
-        public Categoria CategoriaId { get; set; }
+        public Categoria Categoria { get; set; }
+
+        public int UnidadMedidaId { get; set; }
 
         [ForeignKey("UnidadMedidaId")]
-        public UnidadMedida UnidadMedidaId { get; set; }
+        public UnidadMedida UnidadMedida { get; set; }
 
         public DateTime FechaCreacion { get; set; }
 
