@@ -168,6 +168,10 @@
     <Compile Include="Migrations\202404062255094_AdicionTablaFactura.Designer.cs">
       <DependentUpon>202404062255094_AdicionTablaFactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202404062311288_AdicionTablaFacturaDetalle.cs" />
+    <Compile Include="Migrations\202404062311288_AdicionTablaFacturaDetalle.Designer.cs">
+      <DependentUpon>202404062311288_AdicionTablaFacturaDetalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -290,6 +294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202404062255094_AdicionTablaFactura.resx">
       <DependentUpon>202404062255094_AdicionTablaFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404062311288_AdicionTablaFacturaDetalle.resx">
+      <DependentUpon>202404062311288_AdicionTablaFacturaDetalle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
