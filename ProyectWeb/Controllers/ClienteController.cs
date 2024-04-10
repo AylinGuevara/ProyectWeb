@@ -1,5 +1,8 @@
-﻿using System;
+﻿using ProyectWeb.DataBase;
+using ProyectWeb.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -7,83 +10,111 @@ using System.Web.Mvc;
 namespace ProyectWeb.Controllers
 {
     public class ClienteController : Controller
+
     {
+        private ProyectoContext contex;
+        public ClienteController()
+        {
+            contex = new ProyectoContext();
+        }
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            contex.Dispose();
+        }
+
         // GET: Cliente
         public ActionResult Index()
         {
-            return View();
+            var Clientes = contex.Cliente.ToList();
+            return View(Clientes);
         }
-
-        // GET: Cliente/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Nuevo()
         {
-            return View();
+            var cliente = new Cliente(); // Crear un nuevo objeto Cliente
+            return View("ClienteForm", cliente); // Pasar el objeto Cliente a la vista
         }
-
-        // GET: Cliente/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Cliente/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Guardar(Cliente cliente)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                // Guardar el cliente en la base de datos
+                contex.Cliente.Add(cliente);
+                contex.SaveChanges();
+
+                // Redirigir a la acción Index
+                return RedirectToAction("Index");
+            }
+
+            // Si el modelo no es válido, regresar a la vista con los errores
+            return View("ClienteForm", cliente);
+        }
+        public ActionResult Editar(int id)
+        {
+            var cliente = contex.Cliente.FirstOrDefault(c => c.ClienteId == id);
+            if (cliente == null)
+            {
+                return HttpNotFound();
+            }
+            return View("ClienteForm", cliente);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Actualizar(Cliente cliente)
+        {
+            if (ModelState.IsValid)
+            {
+                // Actualizar el cliente en la base de datos
+                contex.Entry(cliente).State = EntityState.Modified;
+                contex.SaveChanges();
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            // Si el modelo no es válido, regresar a la vista con los errores
+            return View("ClienteForm", cliente);
         }
 
-        // GET: Cliente/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Cliente/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Eliminar(int id)
         {
-            try
-            {
-                // TODO: Add update logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
+
+            var cliente = contex.Cliente.Find(id);
+            if (cliente == null)
             {
-                return View();
+                return HttpNotFound();
             }
+
+            return View(cliente);
         }
 
-        // GET: Cliente/Delete/5
-        public ActionResult Delete(int id)
+
+        public ActionResult Detalles(int id)
         {
-            return View();
+            var cliente = contex.Cliente.FirstOrDefault(c => c.ClienteId== id);
+            if (cliente == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cliente);
         }
-
-        // POST: Cliente/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Eliminar")]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConfirmarEliminar(int id)
         {
-            try
+            var cliente = contex.Cliente.Find(id);
+            if (cliente == null)
             {
-                // TODO: Add delete logic here
+                return HttpNotFound();
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            contex.Cliente.Remove(cliente);
+            contex.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

@@ -242,16 +242,18 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\CondicionPago\Index.cshtml" />
+    <Content Include="Views\GrupoDescuento\Index.cshtml" />
+    <Content Include="Views\Producto\Index.cshtml" />
+    <Content Include="Views\UnidadMedida\Index.cshtml" />
+    <Content Include="Views\Cliente\ClienteForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
-    <Folder Include="Views\Categoria\" />
-    <Folder Include="Views\Cliente\" />
-    <Folder Include="Views\CondicionPago\" />
-    <Folder Include="Views\GrupoDescuento\" />
-    <Folder Include="Views\Producto\" />
-    <Folder Include="Views\UnidadMedida\" />
+    <Folder Include="viewsModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
