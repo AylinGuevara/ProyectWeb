@@ -8,31 +8,30 @@ namespace ProyectWeb.Controllers
 {
     public class CategoriaController : Controller
     {
-        // GET: Categoria
+       
         public ActionResult Index()
         {
             return View();
         }
 
-        //Detalles
-        public ActionResult Details(int id)
+       
+        public ActionResult Detalles(int id)
         {
             return View();
         }
 
         // Crear
-        public ActionResult Create()
+        public ActionResult Crear()
         {
             return View();
         }
 
-        // Crear
+       
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Crear(FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
 
                 return RedirectToAction("Index");
             }
@@ -42,15 +41,14 @@ namespace ProyectWeb.Controllers
             }
         }
 
-        // Editar
-        public ActionResult Edit(int id)
+        
+        public ActionResult Editar(int id)
         {
             return View();
         }
 
-        // Editar
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Editar(int id, FormCollection collection)
         {
             try
             {
@@ -64,19 +62,19 @@ namespace ProyectWeb.Controllers
             }
         }
 
-        // Eliminar
-        public ActionResult Delete(int id)
+        
+        public ActionResult Eliminar(int id)
         {
             return View();
         }
 
         // Eliminar
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Eliminar(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                
 
                 return RedirectToAction("Index");
             }
