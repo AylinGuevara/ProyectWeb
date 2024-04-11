@@ -1,90 +1,124 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using ProyectWeb.DataBase;
+using ProyectWeb.Models;
 
 namespace ProyectWeb.Controllers
 {
     public class GrupoDescuentoController : Controller
     {
-        // GET: GrupoDescuento
+        private ProyectoContext db = new ProyectoContext();
+
+        public GrupoDescuentoController()
+        {
+            
+        }
         public ActionResult Index()
         {
-            return View();
+            return View(db.GrupoDescuento.ToList());
         }
 
-
-        //Detalles
-        public ActionResult Details(int id)
+       
+        public ActionResult Detalles(int? id)
         {
-            return View();
-        }
-
-        // GET: GrupoDescuento/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // Crear
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+            if (id == null)
             {
-                
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            GrupoDescuento grupoDescuento = db.GrupoDescuento.Find(id);
+            if (grupoDescuento == null)
+            {
+                return HttpNotFound();
+            }
+            return View(grupoDescuento);
+        }
 
+       
+        public ActionResult Crear()
+        {
+            return View();
+        }
+
+         [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Crear([Bind(Include = "GrupoDescuentoId,Codigo,Descripcion,Estado,Porcentaje,FechaCreacion")] GrupoDescuento grupoDescuento)
+        {
+            if (ModelState.IsValid)
+            {
+                db.GrupoDescuento.Add(grupoDescuento);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
+
+            return View(grupoDescuento);
+        }
+
+        
+        public ActionResult Editar(int? id)
+        {
+            if (id == null)
             {
-                return View();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-        }
-
-        //Editar
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //Editar
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
+            GrupoDescuento grupoDescuento = db.GrupoDescuento.Find(id);
+            if (grupoDescuento == null)
             {
-                // TODO: Add update logic here
+                return HttpNotFound();
+            }
+            return View(grupoDescuento);
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Editar([Bind(Include = "GrupoDescuentoId,Codigo,Descripcion,Estado,Porcentaje,FechaCreacion")] GrupoDescuento grupoDescuento)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(grupoDescuento).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(grupoDescuento);
         }
 
-        // eliminar
-        public ActionResult Delete(int id)
+        
+        public ActionResult Eliminar(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            GrupoDescuento grupoDescuento = db.GrupoDescuento.Find(id);
+            if (grupoDescuento == null)
+            {
+                return HttpNotFound();
+            }
+            return View(grupoDescuento);
         }
 
-        // eliminar
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Eliminar")]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConfirmarEliminar(int id)
         {
-            try
-            {
-                
+            GrupoDescuento grupoDescuento = db.GrupoDescuento.Find(id);
+            db.GrupoDescuento.Remove(grupoDescuento);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
-                return RedirectToAction("Index");
-            }
-            catch
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                return View();
+                db.Dispose();
             }
+            base.Dispose(disposing);
         }
     }
 }
