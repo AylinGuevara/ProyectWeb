@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace ProyectWeb.Controllers
 {
-    public class CategoriaController : Controller
+    public class ProductoController : Controller
     {
-        public CategoriaController()
+        public ProductoController()
         {
             
         }
@@ -17,24 +17,25 @@ namespace ProyectWeb.Controllers
             return View();
         }
 
-       
-        public ActionResult Detalles(int id)
+        // GET: Producto/Details/5
+        public ActionResult Details(int id)
         {
             return View();
         }
 
-        // Crear
-        public ActionResult Crear()
+        // GET: Producto/Create
+        public ActionResult Create()
         {
             return View();
         }
 
-       
+        // POST: Producto/Create
         [HttpPost]
-        public ActionResult Crear(FormCollection collection)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
+                // TODO: Add insert logic here
 
                 return RedirectToAction("Index");
             }
@@ -44,18 +45,19 @@ namespace ProyectWeb.Controllers
             }
         }
 
-        
-        public ActionResult Editar(int id)
+        // GET: Producto/Edit/5
+        public ActionResult Edit(int id)
         {
             return View();
         }
 
+        // POST: Producto/Edit/5
         [HttpPost]
-        public ActionResult Editar(int id, FormCollection collection)
+        public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
-                
+                // TODO: Add update logic here
 
                 return RedirectToAction("Index");
             }
@@ -65,19 +67,19 @@ namespace ProyectWeb.Controllers
             }
         }
 
-        
-        public ActionResult Eliminar(int id)
+        // GET: Producto/Delete/5
+        public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // Eliminar
+        // POST: Producto/Delete/5
         [HttpPost]
-        public ActionResult Eliminar(int id, FormCollection collection)
+        public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
-                
+                // TODO: Add delete logic here
 
                 return RedirectToAction("Index");
             }

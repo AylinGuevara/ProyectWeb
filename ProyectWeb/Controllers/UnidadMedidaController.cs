@@ -8,31 +8,35 @@ namespace ProyectWeb.Controllers
 {
     public class UnidadMedidaController : Controller
     {
-        // GET: UnidadMedida
+        public UnidadMedidaController()
+        {
+            
+        }
+
         public ActionResult Index()
         {
             return View();
         }
 
-        // Detalles
-        public ActionResult Details(int id)
+        
+        public ActionResult Detalles(int id)
         {
             return View();
         }
 
-        // Crear
-        public ActionResult Create()
+       
+        public ActionResult Crear()
         {
             return View();
         }
 
         // Crear
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Crear(FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
+                
 
                 return RedirectToAction("Index");
             }
@@ -43,18 +47,18 @@ namespace ProyectWeb.Controllers
         }
 
         //Editar
-        public ActionResult Edit(int id)
+        public ActionResult Editar(int id)
         {
             return View();
         }
 
-        //Editar
+        
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Editar(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
+                
 
                 return RedirectToAction("Index");
             }
@@ -64,14 +68,14 @@ namespace ProyectWeb.Controllers
             }
         }
 
-        // eliminar
-        public ActionResult Delete(int id)
+        
+        public ActionResult eliminar(int id)
         {
             return View();
         }
-        // eliminar
+        
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult eliminar(int id, FormCollection collection)
         {
             try
             {
