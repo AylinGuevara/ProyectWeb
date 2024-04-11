@@ -14,19 +14,19 @@ namespace ProyectWeb.Controllers
             return View();
         }
 
-        // GET: UnidadMedida/Details/5
+        // Detalles
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: UnidadMedida/Create
+        // Crear
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: UnidadMedida/Create
+        // Crear
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -42,13 +42,13 @@ namespace ProyectWeb.Controllers
             }
         }
 
-        // GET: UnidadMedida/Edit/5
+        //Editar
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: UnidadMedida/Edit/5
+        //Editar
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -64,19 +64,17 @@ namespace ProyectWeb.Controllers
             }
         }
 
-        // GET: UnidadMedida/Delete/5
+        // eliminar
         public ActionResult Delete(int id)
         {
             return View();
         }
-
-        // POST: UnidadMedida/Delete/5
+        // eliminar
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
 
                 return RedirectToAction("Index");
             }

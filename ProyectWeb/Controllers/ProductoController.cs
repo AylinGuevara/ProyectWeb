@@ -14,25 +14,25 @@ namespace ProyectWeb.Controllers
             return View();
         }
 
-        // GET: Producto/Details/5
+        //DEtalles
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Producto/Create
+        // Crear
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Producto/Create
+        // crear
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
+                
 
                 return RedirectToAction("Index");
             }
@@ -42,19 +42,19 @@ namespace ProyectWeb.Controllers
             }
         }
 
-        // GET: Producto/Edit/5
+        //Editar
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Producto/Edit/5
+        //Editar
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
+             
 
                 return RedirectToAction("Index");
             }
@@ -64,13 +64,13 @@ namespace ProyectWeb.Controllers
             }
         }
 
-        // GET: Producto/Delete/5
+        // eliminar
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Producto/Delete/5
+        // eliminar
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

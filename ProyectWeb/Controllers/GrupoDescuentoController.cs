@@ -14,7 +14,8 @@ namespace ProyectWeb.Controllers
             return View();
         }
 
-        // GET: GrupoDescuento/Details/5
+
+        //Detalles
         public ActionResult Details(int id)
         {
             return View();
@@ -26,13 +27,13 @@ namespace ProyectWeb.Controllers
             return View();
         }
 
-        // POST: GrupoDescuento/Create
+        // Crear
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
+                
 
                 return RedirectToAction("Index");
             }
@@ -42,13 +43,13 @@ namespace ProyectWeb.Controllers
             }
         }
 
-        // GET: GrupoDescuento/Edit/5
+        //Editar
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: GrupoDescuento/Edit/5
+        //Editar
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -64,19 +65,19 @@ namespace ProyectWeb.Controllers
             }
         }
 
-        // GET: GrupoDescuento/Delete/5
+        // eliminar
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: GrupoDescuento/Delete/5
+        // eliminar
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                
 
                 return RedirectToAction("Index");
             }
