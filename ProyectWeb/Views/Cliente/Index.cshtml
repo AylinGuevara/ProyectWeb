@@ -1,7 +1,54 @@
 ﻿
+
+@model IEnumerable<Actividad_9AplicaciónRenta.Models.Cliente>
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Todos los Clientes</h2>
 
+<p>
+    @Html.ActionLink("Crear Cliente", "Nuevo", null, new
+    {
+    @class = "btn btn-primary"
+})
+</p>
+<hr />
+<br />
+<table id="cliente" class="table table-bordered">
+    <thead>
+    <th>Clienteld</th>
+    <th> Codigo </th>
+    <th> Nombres </th>
+    <th>Apellidos </th>
+    <th> GrupoDescuentoId  </th>
+    <th> CondicionPagoId </th>
+    <th> Estado  </th>
+    <th> FechaCreacion</th>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> @Html.DisplayFor(modelItem => item.Clienteld) </td>
+                <td> @Html.DisplayFor(modelItem => item.Codigo) </td>
+                <td> @Html.DisplayFor(modelItem => item.Nombres) </td>
+                <td> @Html.DisplayFor(modelItem => item.Apellidos) </td>
+                <td> @Html.DisplayFor(modelItem => item.GrupoDescuentoId) </td>
+                <td> @Html.DisplayFor(modelItem => item.CondicionPagoId) </td>
+                <td> @Html.DisplayFor(modelItem => item.Estado) </td>
+                <td> @Html.DisplayFor(modelItem => item. FechaCreacion) </td>
+                <td>
+                    @Html.ActionLink("Editar", "Editar", new { id = item.Clienteld }, new { @class = "btn btn-success" })|
+                    @Html.ActionLink("Details", "Detalles", new { id = item.Clienteld }, new { @class = "btn btn-warning" }) |
+
+                    @Html.ActionLink("Eliminar", "Eliminar", new { id = item.Clienteld }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>
