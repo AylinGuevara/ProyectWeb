@@ -5,11 +5,9 @@
 }
 
 <h2>Mantenimiento de CondicionPago<</h2>
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Crear", "CondicionPago"))
 {
     @Html.AntiForgeryToken()
-    
     <div class="form-horizontal">
         <h4>CondicionPago</h4>
         <hr />
