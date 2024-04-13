@@ -11,32 +11,31 @@ using ProyectWeb.Models;
 
 namespace ProyectWeb.Controllers
 {
-    public class CategoriaController : Controller
+    public class UnidadMedidaController : Controller
     {
         private ProyectoContext db = new ProyectoContext();
 
-     
         public ActionResult Index()
         {
-            return View(db.Categoria.ToList());
+            return View(db.UnidadMedida.ToList());
         }
 
-        
+       
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Categoria categoria = db.Categoria.Find(id);
-            if (categoria == null)
+            UnidadMedida unidadMedida = db.UnidadMedida.Find(id);
+            if (unidadMedida == null)
             {
                 return HttpNotFound();
             }
-            return View(categoria);
+            return View(unidadMedida);
         }
 
-       
+     
         public ActionResult Create()
         {
             return View();
@@ -45,67 +44,69 @@ namespace ProyectWeb.Controllers
        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CategoriaId,Codigo,Descripcion,Estado,FechaCreacion")] Categoria categoria)
+        public ActionResult Create([Bind(Include = "UnidadMedidaId,Codigo,Descripcion,Estado,FechaCreacion")] UnidadMedida unidadMedida)
         {
             if (ModelState.IsValid)
             {
-                db.Categoria.Add(categoria);
+                db.UnidadMedida.Add(unidadMedida);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(categoria);
+            return View(unidadMedida);
         }
 
+       
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Categoria categoria = db.Categoria.Find(id);
-            if (categoria == null)
+            UnidadMedida unidadMedida = db.UnidadMedida.Find(id);
+            if (unidadMedida == null)
             {
                 return HttpNotFound();
             }
-            return View(categoria);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CategoriaId,Codigo,Descripcion,Estado,FechaCreacion")] Categoria categoria)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(categoria).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(categoria);
+            return View(unidadMedida);
         }
 
         
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "UnidadMedidaId,Codigo,Descripcion,Estado,FechaCreacion")] UnidadMedida unidadMedida)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(unidadMedida).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(unidadMedida);
+        }
+
+       
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Categoria categoria = db.Categoria.Find(id);
-            if (categoria == null)
+            UnidadMedida unidadMedida = db.UnidadMedida.Find(id);
+            if (unidadMedida == null)
             {
                 return HttpNotFound();
             }
-            return View(categoria);
+            return View(unidadMedida);
         }
 
-       
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Categoria categoria = db.Categoria.Find(id);
-            db.Categoria.Remove(categoria);
+            UnidadMedida unidadMedida = db.UnidadMedida.Find(id);
+            db.UnidadMedida.Remove(unidadMedida);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
