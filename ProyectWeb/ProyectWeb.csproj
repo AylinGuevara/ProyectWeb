@@ -125,6 +125,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\GrupoDescuentoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UnidadMedidaController.cs" />
     <Compile Include="DataBase\ProyectoContext.cs" />
@@ -245,6 +246,11 @@
     <Content Include="Views\UnidadMedida\Delete.cshtml" />
     <Content Include="Views\UnidadMedida\Details.cshtml" />
     <Content Include="Views\UnidadMedida\Edit.cshtml" />
+    <Content Include="Views\GrupoDescuento\Create.cshtml" />
+    <Content Include="Views\GrupoDescuento\Delete.cshtml" />
+    <Content Include="Views\GrupoDescuento\Details.cshtml" />
+    <Content Include="Views\GrupoDescuento\Edit.cshtml" />
+    <Content Include="Views\GrupoDescuento\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
