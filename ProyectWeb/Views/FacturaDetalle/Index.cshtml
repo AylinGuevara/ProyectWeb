@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ProyectWeb.Models.FacturaDetalle>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Factura.FacturaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producto.ProductoId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descuento)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Factura.FacturaId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Producto.ProductoId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaCreacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descuento)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FacturaDetalleId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FacturaDetalleId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FacturaDetalleId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -128,6 +128,7 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CondicionPagoController.cs" />
     <Compile Include="Controllers\FacturaController.cs" />
+    <Compile Include="Controllers\FacturaDetalleController.cs" />
     <Compile Include="Controllers\GrupoDescuentoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PedidoController.cs" />
@@ -287,6 +288,11 @@
     <Content Include="Views\Factura\Details.cshtml" />
     <Content Include="Views\Factura\Edit.cshtml" />
     <Content Include="Views\Factura\Index.cshtml" />
+    <Content Include="Views\FacturaDetalle\Create.cshtml" />
+    <Content Include="Views\FacturaDetalle\Delete.cshtml" />
+    <Content Include="Views\FacturaDetalle\Details.cshtml" />
+    <Content Include="Views\FacturaDetalle\Edit.cshtml" />
+    <Content Include="Views\FacturaDetalle\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
