@@ -1,0 +1,125 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using ProyectWeb.DataBase;
+using ProyectWeb.Models;
+
+namespace ProyectWeb.Controllers
+{
+    public class ClienteController : Controller
+    {
+        private ProyectoContext db = new ProyectoContext();
+
+        public ActionResult Index()
+        {
+            var cliente = db.Cliente.Include(c => c.CondicionPago).Include(c => c.GrupoDescuento);
+            return View(cliente.ToList());
+        }
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Cliente cliente = db.Cliente.Find(id);
+            if (cliente == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cliente);
+        }
+
+        public ActionResult Create()
+        {
+            ViewBag.CondicionPagoId = new SelectList(db.CondicionPago, "CondicionPagoId", "Codigo");
+            ViewBag.GrupoDescuentoId = new SelectList(db.GrupoDescuento, "GrupoDescuentoId", "Codigo");
+            return View(new Cliente());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ClienteId,Codigo,Nombres,Apellidos,GrupoDescuentoId,CondicionPagoId,Estado,FechaCreacion")] Cliente cliente)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Cliente.Add(cliente);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.CondicionPagoId = new SelectList(db.CondicionPago, "CondicionPagoId", "Codigo", cliente.CondicionPagoId);
+            ViewBag.GrupoDescuentoId = new SelectList(db.GrupoDescuento, "GrupoDescuentoId", "Codigo", cliente.GrupoDescuentoId);
+            return View(cliente);
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Cliente cliente = db.Cliente.Find(id);
+            if (cliente == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.CondicionPagoId = new SelectList(db.CondicionPago, "CondicionPagoId", "Codigo", cliente.CondicionPagoId);
+            ViewBag.GrupoDescuentoId = new SelectList(db.GrupoDescuento, "GrupoDescuentoId", "Codigo", cliente.GrupoDescuentoId);
+            return View(cliente);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "ClienteId,Codigo,Nombres,Apellidos,GrupoDescuentoId,CondicionPagoId,Estado,FechaCreacion")] Cliente cliente)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(cliente).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.CondicionPagoId = new SelectList(db.CondicionPago, "CondicionPagoId", "Codigo", cliente.CondicionPagoId);
+            ViewBag.GrupoDescuentoId = new SelectList(db.GrupoDescuento, "GrupoDescuentoId", "Codigo", cliente.GrupoDescuentoId);
+            return View(cliente);
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Cliente cliente = db.Cliente.Find(id);
+            if (cliente == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cliente);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Cliente cliente = db.Cliente.Find(id);
+            db.Cliente.Remove(cliente);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
+}

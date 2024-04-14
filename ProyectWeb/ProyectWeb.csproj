@@ -125,6 +125,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CondicionPagoController.cs" />
     <Compile Include="Controllers\GrupoDescuentoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -257,6 +258,11 @@
     <Content Include="Views\CondicionPago\Details.cshtml" />
     <Content Include="Views\CondicionPago\Edit.cshtml" />
     <Content Include="Views\CondicionPago\Index.cshtml" />
+    <Content Include="Views\Cliente\Create.cshtml" />
+    <Content Include="Views\Cliente\Delete.cshtml" />
+    <Content Include="Views\Cliente\Details.cshtml" />
+    <Content Include="Views\Cliente\Edit.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
