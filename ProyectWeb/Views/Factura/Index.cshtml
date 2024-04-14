@@ -65,9 +65,9 @@
             @Html.DisplayFor(modelItem => item.Descuento)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FacturaId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FacturaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FacturaId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.FacturaId }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FacturaId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FacturaId }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }
