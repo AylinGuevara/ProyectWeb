@@ -13,10 +13,10 @@ namespace ProyectWeb.Controllers
 {
     public class FacturaController : Controller
     {
-        private ProyectoContext db = new ProyectoContext();
+        private ProyectoContext dbContext  = new ProyectoContext();
         public ActionResult Index()
         {
-            var factura = db.Factura.Include(f => f.Cliente).Include(f => f.Pedido);
+            var factura = dbContext.Factura.Include(f => f.Cliente).Include(f => f.Pedido);
             return View(factura.ToList());
         }
         public ActionResult Details(int? id)
@@ -25,7 +25,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Factura factura = db.Factura.Find(id);
+            Factura factura = dbContext.Factura.Find(id);
             if (factura == null)
             {
                 return HttpNotFound();
@@ -34,8 +34,8 @@ namespace ProyectWeb.Controllers
         }
         public ActionResult Create()
         {
-            ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Codigo");
-            ViewBag.PedidoId = new SelectList(db.Pedido, "PedidoId", "PedidoId");
+            ViewBag.ClienteId = new SelectList(dbContext.Cliente, "ClienteId", "Codigo");
+            ViewBag.PedidoId = new SelectList(dbContext.Pedido, "PedidoId", "PedidoId");
             return View(new Factura());
         }
         [HttpPost]
@@ -44,13 +44,14 @@ namespace ProyectWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Factura.Add(factura);
-                db.SaveChanges();
+                dbContext.Factura.Add(factura);
+                dbContext.Factura.Add(factura);
+                dbContext.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Codigo", factura.ClienteId);
-            ViewBag.PedidoId = new SelectList(db.Pedido, "PedidoId", "PedidoId", factura.PedidoId);
+            ViewBag.ClienteId = new SelectList(dbContext.Cliente, "ClienteId", "Codigo", factura.ClienteId);
+            ViewBag.PedidoId = new SelectList(dbContext.Pedido, "PedidoId", "PedidoId", factura.PedidoId);
             return View(factura);
         }
         public ActionResult Edit(int? id)
@@ -59,13 +60,13 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Factura factura = db.Factura.Find(id);
+            Factura factura = dbContext.Factura.Find(id);
             if (factura == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Codigo", factura.ClienteId);
-            ViewBag.PedidoId = new SelectList(db.Pedido, "PedidoId", "PedidoId", factura.PedidoId);
+            ViewBag.ClienteId = new SelectList(dbContext.Cliente, "ClienteId", "Codigo", factura.ClienteId);
+            ViewBag.PedidoId = new SelectList(dbContext.Pedido, "PedidoId", "PedidoId", factura.PedidoId);
             return View(factura);
         }
         [HttpPost]
@@ -74,12 +75,12 @@ namespace ProyectWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(factura).State = EntityState.Modified;
-                db.SaveChanges();
+                dbContext.Entry(factura).State = EntityState.Modified;
+                dbContext.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Codigo", factura.ClienteId);
-            ViewBag.PedidoId = new SelectList(db.Pedido, "PedidoId", "PedidoId", factura.PedidoId);
+            ViewBag.ClienteId = new SelectList(dbContext.Cliente, "ClienteId", "Codigo", factura.ClienteId);
+            ViewBag.PedidoId = new SelectList(dbContext.Pedido, "PedidoId", "PedidoId", factura.PedidoId);
             return View(factura);
         }
         public ActionResult Delete(int? id)
@@ -88,7 +89,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Factura factura = db.Factura.Find(id);
+            Factura factura = dbContext.Factura.Find(id);
             if (factura == null)
             {
                 return HttpNotFound();
@@ -99,9 +100,9 @@ namespace ProyectWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Factura factura = db.Factura.Find(id);
-            db.Factura.Remove(factura);
-            db.SaveChanges();
+            Factura factura = dbContext.Factura.Find(id);
+            dbContext.Factura.Remove(factura);
+            dbContext.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -109,7 +110,7 @@ namespace ProyectWeb.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                dbContext.Dispose();
             }
             base.Dispose(disposing);
         }

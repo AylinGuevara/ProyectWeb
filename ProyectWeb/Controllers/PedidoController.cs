@@ -13,11 +13,11 @@ namespace ProyectWeb.Controllers
 {
     public class PedidoController : Controller
     {
-        private ProyectoContext db = new ProyectoContext();
+        private ProyectoContext Context = new ProyectoContext();
 
         public ActionResult Index()
         {
-            var pedido = db.Pedido.Include(p => p.Cliente);
+            var pedido = Context.Pedido.Include(p => p.Cliente);
             return View(pedido.ToList());
         }
 
@@ -27,7 +27,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pedido pedido = db.Pedido.Find(id);
+            Pedido pedido = Context.Pedido.Find(id);
             if (pedido == null)
             {
                 return HttpNotFound();
@@ -37,7 +37,7 @@ namespace ProyectWeb.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Codigo");
+            ViewBag.ClienteId = new SelectList(Context.Cliente, "ClienteId", "Codigo");
             return View(new Pedido());
         }
 
@@ -47,12 +47,12 @@ namespace ProyectWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Pedido.Add(pedido);
-                db.SaveChanges();
+                Context.Pedido.Add(pedido);
+                Context.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Codigo", pedido.ClienteId);
+            ViewBag.ClienteId = new SelectList(Context.Cliente, "ClienteId", "Codigo", pedido.ClienteId);
             return View(pedido);
         }
 
@@ -62,12 +62,12 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pedido pedido = db.Pedido.Find(id);
+            Pedido pedido = Context.Pedido.Find(id);
             if (pedido == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Codigo", pedido.ClienteId);
+            ViewBag.ClienteId = new SelectList(Context.Cliente, "ClienteId", "Codigo", pedido.ClienteId);
             return View(pedido);
         }
 
@@ -77,11 +77,11 @@ namespace ProyectWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pedido).State = EntityState.Modified;
-                db.SaveChanges();
+                Context.Entry(pedido).State = EntityState.Modified;
+                Context.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Codigo", pedido.ClienteId);
+            ViewBag.ClienteId = new SelectList(Context.Cliente, "ClienteId", "Codigo", pedido.ClienteId);
             return View(pedido);
         }
 
@@ -91,7 +91,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pedido pedido = db.Pedido.Find(id);
+            Pedido pedido = Context.Pedido.Find(id);
             if (pedido == null)
             {
                 return HttpNotFound();
@@ -103,9 +103,9 @@ namespace ProyectWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Pedido pedido = db.Pedido.Find(id);
-            db.Pedido.Remove(pedido);
-            db.SaveChanges();
+            Pedido pedido = Context.Pedido.Find(id);
+            Context.Pedido.Remove(pedido);
+            Context.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -113,7 +113,7 @@ namespace ProyectWeb.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                Context.Dispose();
             }
             base.Dispose(disposing);
         }

@@ -13,12 +13,12 @@ namespace ProyectWeb.Controllers
 {
     public class CategoriaController : Controller
     {
-        private ProyectoContext db = new ProyectoContext();
+        private ProyectoContext context = new ProyectoContext();
 
      
         public ActionResult Index()
         {
-            return View(db.Categoria.ToList());
+            return View(context.Categoria.ToList());
         }
 
         
@@ -28,7 +28,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Categoria categoria = db.Categoria.Find(id);
+            Categoria categoria = context.Categoria.Find(id);
             if (categoria == null)
             {
                 return HttpNotFound();
@@ -49,8 +49,8 @@ namespace ProyectWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Categoria.Add(categoria);
-                db.SaveChanges();
+                context.Categoria.Add(categoria);
+                context.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -63,7 +63,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Categoria categoria = db.Categoria.Find(id);
+            Categoria categoria = context.Categoria.Find(id);
             if (categoria == null)
             {
                 return HttpNotFound();
@@ -77,8 +77,8 @@ namespace ProyectWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(categoria).State = EntityState.Modified;
-                db.SaveChanges();
+                context.Entry(categoria).State = EntityState.Modified;
+                context.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(categoria);
@@ -91,7 +91,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Categoria categoria = db.Categoria.Find(id);
+            Categoria categoria = context.Categoria.Find(id);
             if (categoria == null)
             {
                 return HttpNotFound();
@@ -104,9 +104,9 @@ namespace ProyectWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Categoria categoria = db.Categoria.Find(id);
-            db.Categoria.Remove(categoria);
-            db.SaveChanges();
+            Categoria categoria = context.Categoria.Find(id);
+            context.Categoria.Remove(categoria);
+            context.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -114,7 +114,7 @@ namespace ProyectWeb.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                context.Dispose();
             }
             base.Dispose(disposing);
         }

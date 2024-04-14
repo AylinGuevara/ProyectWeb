@@ -13,11 +13,11 @@ namespace ProyectWeb.Controllers
 {
     public class UnidadMedidaController : Controller
     {
-        private ProyectoContext db = new ProyectoContext();
+        private ProyectoContext Context = new ProyectoContext();
 
         public ActionResult Index()
         {
-            return View(db.UnidadMedida.ToList());
+            return View(Context.UnidadMedida.ToList());
         }
 
        
@@ -27,7 +27,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UnidadMedida unidadMedida = db.UnidadMedida.Find(id);
+            UnidadMedida unidadMedida = Context.UnidadMedida.Find(id);
             if (unidadMedida == null)
             {
                 return HttpNotFound();
@@ -38,7 +38,7 @@ namespace ProyectWeb.Controllers
      
         public ActionResult Create()
         {
-            return View();
+            return View(new UnidadMedida());
         }
 
        
@@ -48,8 +48,8 @@ namespace ProyectWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.UnidadMedida.Add(unidadMedida);
-                db.SaveChanges();
+                Context.UnidadMedida.Add(unidadMedida);
+                Context.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -63,7 +63,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UnidadMedida unidadMedida = db.UnidadMedida.Find(id);
+            UnidadMedida unidadMedida = Context.UnidadMedida.Find(id);
             if (unidadMedida == null)
             {
                 return HttpNotFound();
@@ -78,8 +78,8 @@ namespace ProyectWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(unidadMedida).State = EntityState.Modified;
-                db.SaveChanges();
+                Context.Entry(unidadMedida).State = EntityState.Modified;
+                Context.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(unidadMedida);
@@ -92,7 +92,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UnidadMedida unidadMedida = db.UnidadMedida.Find(id);
+            UnidadMedida unidadMedida = Context.UnidadMedida.Find(id);
             if (unidadMedida == null)
             {
                 return HttpNotFound();
@@ -105,9 +105,9 @@ namespace ProyectWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            UnidadMedida unidadMedida = db.UnidadMedida.Find(id);
-            db.UnidadMedida.Remove(unidadMedida);
-            db.SaveChanges();
+            UnidadMedida unidadMedida = Context.UnidadMedida.Find(id);
+            Context.UnidadMedida.Remove(unidadMedida);
+            Context.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -115,7 +115,7 @@ namespace ProyectWeb.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                Context.Dispose();
             }
             base.Dispose(disposing);
         }

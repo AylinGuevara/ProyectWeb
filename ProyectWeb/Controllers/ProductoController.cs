@@ -13,11 +13,11 @@ namespace ProyectWeb.Controllers
 {
     public class ProductoController : Controller
     {
-        private ProyectoContext db = new ProyectoContext();
+        private ProyectoContext Context = new ProyectoContext();
 
         public ActionResult Index()
         {
-            var producto = db.Producto.Include(p => p.Categoria).Include(p => p.UnidadMedida);
+            var producto = Context.Producto.Include(p => p.Categoria).Include(p => p.UnidadMedida);
             return View(producto.ToList());
         }
         public ActionResult Details(int? id)
@@ -26,7 +26,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Producto producto = db.Producto.Find(id);
+            Producto producto = Context.Producto.Find(id);
             if (producto == null)
             {
                 return HttpNotFound();
@@ -36,8 +36,8 @@ namespace ProyectWeb.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.CategoriaId = new SelectList(db.Categoria, "CategoriaId", "Codigo");
-            ViewBag.UnidadMedidaId = new SelectList(db.UnidadMedida, "UnidadMedidaId", "Codigo");
+            ViewBag.CategoriaId = new SelectList(Context.Categoria, "CategoriaId", "Codigo");
+            ViewBag.UnidadMedidaId = new SelectList(Context.UnidadMedida, "UnidadMedidaId", "Codigo");
             return View(new Producto());
         }
 
@@ -47,13 +47,13 @@ namespace ProyectWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Producto.Add(producto);
-                db.SaveChanges();
+                Context.Producto.Add(producto);
+                Context.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoriaId = new SelectList(db.Categoria, "CategoriaId", "Codigo", producto.CategoriaId);
-            ViewBag.UnidadMedidaId = new SelectList(db.UnidadMedida, "UnidadMedidaId", "Codigo", producto.UnidadMedidaId);
+            ViewBag.CategoriaId = new SelectList(Context.Categoria, "CategoriaId", "Codigo", producto.CategoriaId);
+            ViewBag.UnidadMedidaId = new SelectList(Context.UnidadMedida, "UnidadMedidaId", "Codigo", producto.UnidadMedidaId);
             return View(producto);
         }
 
@@ -63,13 +63,13 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Producto producto = db.Producto.Find(id);
+            Producto producto = Context.Producto.Find(id);
             if (producto == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoriaId = new SelectList(db.Categoria, "CategoriaId", "Codigo", producto.CategoriaId);
-            ViewBag.UnidadMedidaId = new SelectList(db.UnidadMedida, "UnidadMedidaId", "Codigo", producto.UnidadMedidaId);
+            ViewBag.CategoriaId = new SelectList(Context.Categoria, "CategoriaId", "Codigo", producto.CategoriaId);
+            ViewBag.UnidadMedidaId = new SelectList(Context.UnidadMedida, "UnidadMedidaId", "Codigo", producto.UnidadMedidaId);
             return View(producto);
         }
 
@@ -79,12 +79,12 @@ namespace ProyectWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(producto).State = EntityState.Modified;
-                db.SaveChanges();
+                Context.Entry(producto).State = EntityState.Modified;
+                Context.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoriaId = new SelectList(db.Categoria, "CategoriaId", "Codigo", producto.CategoriaId);
-            ViewBag.UnidadMedidaId = new SelectList(db.UnidadMedida, "UnidadMedidaId", "Codigo", producto.UnidadMedidaId);
+            ViewBag.CategoriaId = new SelectList(Context.Categoria, "CategoriaId", "Codigo", producto.CategoriaId);
+            ViewBag.UnidadMedidaId = new SelectList(Context.UnidadMedida, "UnidadMedidaId", "Codigo", producto.UnidadMedidaId);
             return View(producto);
         }
 
@@ -94,7 +94,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Producto producto = db.Producto.Find(id);
+            Producto producto = Context.Producto.Find(id);
             if (producto == null)
             {
                 return HttpNotFound();
@@ -106,9 +106,9 @@ namespace ProyectWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Producto producto = db.Producto.Find(id);
-            db.Producto.Remove(producto);
-            db.SaveChanges();
+            Producto producto = Context.Producto.Find(id);
+            Context.Producto.Remove(producto);
+            Context.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -116,7 +116,7 @@ namespace ProyectWeb.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                Context.Dispose();
             }
             base.Dispose(disposing);
         }

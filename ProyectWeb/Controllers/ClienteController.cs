@@ -13,11 +13,11 @@ namespace ProyectWeb.Controllers
 {
     public class ClienteController : Controller
     {
-        private ProyectoContext db = new ProyectoContext();
+        private ProyectoContext context = new ProyectoContext();
 
         public ActionResult Index()
         {
-            var cliente = db.Cliente.Include(c => c.CondicionPago).Include(c => c.GrupoDescuento);
+            var cliente = context.Cliente.Include(c => c.CondicionPago).Include(c => c.GrupoDescuento);
             return View(cliente.ToList());
         }
 
@@ -27,7 +27,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = db.Cliente.Find(id);
+            Cliente cliente = context.Cliente.Find(id);
             if (cliente == null)
             {
                 return HttpNotFound();
@@ -37,8 +37,8 @@ namespace ProyectWeb.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.CondicionPagoId = new SelectList(db.CondicionPago, "CondicionPagoId", "Codigo");
-            ViewBag.GrupoDescuentoId = new SelectList(db.GrupoDescuento, "GrupoDescuentoId", "Codigo");
+            ViewBag.CondicionPagoId = new SelectList(context.CondicionPago, "CondicionPagoId", "Codigo");
+            ViewBag.GrupoDescuentoId = new SelectList(context.GrupoDescuento, "GrupoDescuentoId", "Codigo");
             return View(new Cliente());
         }
 
@@ -48,13 +48,13 @@ namespace ProyectWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Cliente.Add(cliente);
-                db.SaveChanges();
+                context.Cliente.Add(cliente);
+                context.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CondicionPagoId = new SelectList(db.CondicionPago, "CondicionPagoId", "Codigo", cliente.CondicionPagoId);
-            ViewBag.GrupoDescuentoId = new SelectList(db.GrupoDescuento, "GrupoDescuentoId", "Codigo", cliente.GrupoDescuentoId);
+            ViewBag.CondicionPagoId = new SelectList(context.CondicionPago, "CondicionPagoId", "Codigo", cliente.CondicionPagoId);
+            ViewBag.GrupoDescuentoId = new SelectList(context.GrupoDescuento, "GrupoDescuentoId", "Codigo", cliente.GrupoDescuentoId);
             return View(cliente);
         }
 
@@ -64,13 +64,13 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = db.Cliente.Find(id);
+            Cliente cliente = context.Cliente.Find(id);
             if (cliente == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CondicionPagoId = new SelectList(db.CondicionPago, "CondicionPagoId", "Codigo", cliente.CondicionPagoId);
-            ViewBag.GrupoDescuentoId = new SelectList(db.GrupoDescuento, "GrupoDescuentoId", "Codigo", cliente.GrupoDescuentoId);
+            ViewBag.CondicionPagoId = new SelectList(context.CondicionPago, "CondicionPagoId", "Codigo", cliente.CondicionPagoId);
+            ViewBag.GrupoDescuentoId = new SelectList(context.GrupoDescuento, "GrupoDescuentoId", "Codigo", cliente.GrupoDescuentoId);
             return View(cliente);
         }
 
@@ -80,12 +80,12 @@ namespace ProyectWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cliente).State = EntityState.Modified;
-                db.SaveChanges();
+                context.Entry(cliente).State = EntityState.Modified;
+                context.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CondicionPagoId = new SelectList(db.CondicionPago, "CondicionPagoId", "Codigo", cliente.CondicionPagoId);
-            ViewBag.GrupoDescuentoId = new SelectList(db.GrupoDescuento, "GrupoDescuentoId", "Codigo", cliente.GrupoDescuentoId);
+            ViewBag.CondicionPagoId = new SelectList(context.CondicionPago, "CondicionPagoId", "Codigo", cliente.CondicionPagoId);
+            ViewBag.GrupoDescuentoId = new SelectList(context.GrupoDescuento, "GrupoDescuentoId", "Codigo", cliente.GrupoDescuentoId);
             return View(cliente);
         }
 
@@ -95,7 +95,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = db.Cliente.Find(id);
+            Cliente cliente = context.Cliente.Find(id);
             if (cliente == null)
             {
                 return HttpNotFound();
@@ -107,9 +107,9 @@ namespace ProyectWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Cliente cliente = db.Cliente.Find(id);
-            db.Cliente.Remove(cliente);
-            db.SaveChanges();
+            Cliente cliente = context.Cliente.Find(id);
+            context.Cliente.Remove(cliente);
+            context.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -117,7 +117,7 @@ namespace ProyectWeb.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                context.Dispose();
             }
             base.Dispose(disposing);
         }

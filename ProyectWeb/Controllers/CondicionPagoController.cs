@@ -13,11 +13,11 @@ namespace ProyectWeb.Controllers
 {
     public class CondicionPagoController : Controller
     {
-        private ProyectoContext db = new ProyectoContext();
+        private ProyectoContext dbContext = new ProyectoContext();
 
         public ActionResult Index()
         {
-            return View(db.CondicionPago.ToList());
+            return View(dbContext.CondicionPago.ToList());
         }
 
         public ActionResult Details(int? id)
@@ -26,7 +26,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CondicionPago condicionPago = db.CondicionPago.Find(id);
+            CondicionPago condicionPago = dbContext.CondicionPago.Find(id);
             if (condicionPago == null)
             {
                 return HttpNotFound();
@@ -44,8 +44,8 @@ namespace ProyectWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.CondicionPago.Add(condicionPago);
-                db.SaveChanges();
+                dbContext.CondicionPago.Add(condicionPago);
+                dbContext.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -58,7 +58,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CondicionPago condicionPago = db.CondicionPago.Find(id);
+            CondicionPago condicionPago = dbContext.CondicionPago.Find(id);
             if (condicionPago == null)
             {
                 return HttpNotFound();
@@ -72,8 +72,8 @@ namespace ProyectWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(condicionPago).State = EntityState.Modified;
-                db.SaveChanges();
+                dbContext.Entry(condicionPago).State = EntityState.Modified;
+                dbContext.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(condicionPago);
@@ -85,7 +85,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CondicionPago condicionPago = db.CondicionPago.Find(id);
+            CondicionPago condicionPago = dbContext.CondicionPago.Find(id);
             if (condicionPago == null)
             {
                 return HttpNotFound();
@@ -97,9 +97,9 @@ namespace ProyectWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CondicionPago condicionPago = db.CondicionPago.Find(id);
-            db.CondicionPago.Remove(condicionPago);
-            db.SaveChanges();
+            CondicionPago condicionPago = dbContext.CondicionPago.Find(id);
+            dbContext.CondicionPago.Remove(condicionPago);
+            dbContext.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -107,7 +107,7 @@ namespace ProyectWeb.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                dbContext.Dispose();
             }
             base.Dispose(disposing);
         }

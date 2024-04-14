@@ -13,10 +13,10 @@ namespace ProyectWeb.Controllers
 {
     public class GrupoDescuentoController : Controller
     {
-        private ProyectoContext db = new ProyectoContext();
+        private ProyectoContext Context = new ProyectoContext();
         public ActionResult Index()
         {
-            return View(db.GrupoDescuento.ToList());
+            return View(Context.GrupoDescuento.ToList());
         }
         public ActionResult Details(int? id)
         {
@@ -24,7 +24,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GrupoDescuento grupoDescuento = db.GrupoDescuento.Find(id);
+            GrupoDescuento grupoDescuento = Context.GrupoDescuento.Find(id);
             if (grupoDescuento == null)
             {
                 return HttpNotFound();
@@ -41,8 +41,8 @@ namespace ProyectWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.GrupoDescuento.Add(grupoDescuento);
-                db.SaveChanges();
+                Context.GrupoDescuento.Add(grupoDescuento);
+                Context.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -54,7 +54,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GrupoDescuento grupoDescuento = db.GrupoDescuento.Find(id);
+            GrupoDescuento grupoDescuento = Context.GrupoDescuento.Find(id);
             if (grupoDescuento == null)
             {
                 return HttpNotFound();
@@ -67,8 +67,8 @@ namespace ProyectWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(grupoDescuento).State = EntityState.Modified;
-                db.SaveChanges();
+                Context.Entry(grupoDescuento).State = EntityState.Modified;
+                Context.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(grupoDescuento);
@@ -79,7 +79,7 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GrupoDescuento grupoDescuento = db.GrupoDescuento.Find(id);
+            GrupoDescuento grupoDescuento = Context.GrupoDescuento.Find(id);
             if (grupoDescuento == null)
             {
                 return HttpNotFound();
@@ -90,9 +90,9 @@ namespace ProyectWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            GrupoDescuento grupoDescuento = db.GrupoDescuento.Find(id);
-            db.GrupoDescuento.Remove(grupoDescuento);
-            db.SaveChanges();
+            GrupoDescuento grupoDescuento = Context.GrupoDescuento.Find(id);
+            Context.GrupoDescuento.Remove(grupoDescuento);
+            Context.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -100,7 +100,7 @@ namespace ProyectWeb.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                Context.Dispose();
             }
             base.Dispose(disposing);
         }
