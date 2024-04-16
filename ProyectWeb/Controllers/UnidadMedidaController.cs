@@ -21,7 +21,7 @@ namespace ProyectWeb.Controllers
         }
 
        
-        public ActionResult Detalles(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -57,7 +57,7 @@ namespace ProyectWeb.Controllers
         }
 
        
-        public ActionResult Editar(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -74,7 +74,7 @@ namespace ProyectWeb.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar([Bind(Include = "UnidadMedidaId,Codigo,Descripcion,Estado,FechaCreacion")] UnidadMedida unidadMedida)
+        public ActionResult Edit([Bind(Include = "UnidadMedidaId,Codigo,Descripcion,Estado,FechaCreacion")] UnidadMedida unidadMedida)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace ProyectWeb.Controllers
         }
 
        
-        public ActionResult Eliminar(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -101,9 +101,9 @@ namespace ProyectWeb.Controllers
         }
 
         
-        [HttpPost, ActionName("Eliminar")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult EliminarConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
             UnidadMedida unidadMedida = Context.UnidadMedida.Find(id);
             Context.UnidadMedida.Remove(unidadMedida);
