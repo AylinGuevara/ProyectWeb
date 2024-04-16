@@ -9,6 +9,7 @@ namespace ProyectWeb.Models
 {
     [Table("Cliente")]
     public class Cliente
+    
     {
         [Key]
         [Display(Name = "Cliente Id")]

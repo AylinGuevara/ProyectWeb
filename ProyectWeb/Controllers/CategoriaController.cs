@@ -15,7 +15,11 @@ namespace ProyectWeb.Controllers
     {
         private ProyectoContext context = new ProyectoContext();
 
-     
+        public CategoriaController()
+        {
+            
+        }
+
         public ActionResult Index()
         {
             return View(context.Categoria.ToList());
