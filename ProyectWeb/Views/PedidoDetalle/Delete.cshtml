@@ -6,9 +6,9 @@
 
 <h2>Delete</h2>
 
-<h3>¿Estás segura de que quieres eliminar este campo?</h3>
+<h3>Estás seguro de que quieres eliminar este campo?</h3>
 <div>
-    <h4>Pedido</h4>
+    <h4>PedidoDetalle</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -69,13 +69,12 @@
 
     </dl>
 
-    @using (Html.BeginForm())
-    {
+    @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-<div class="form-actions no-color">
-    <input type="submit" value="Delete" class="btn btn-default" /> |
-    @Html.ActionLink("Regresar", "Index")
-</div>
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
     }
 </div>
