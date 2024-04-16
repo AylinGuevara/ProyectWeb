@@ -89,7 +89,7 @@ namespace ProyectWeb.Controllers
             return View(cliente);
         }
 
-        public ActionResult Elimar(int? id)
+        public ActionResult Eliminar(int? id)
         {
             if (id == null)
             {
