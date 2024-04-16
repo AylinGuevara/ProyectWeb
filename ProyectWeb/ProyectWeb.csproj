@@ -278,11 +278,6 @@
     <Content Include="Views\Pedido\Details.cshtml" />
     <Content Include="Views\Pedido\Edit.cshtml" />
     <Content Include="Views\Pedido\Index.cshtml" />
-    <Content Include="Views\PedidoDetalle\Create.cshtml" />
-    <Content Include="Views\PedidoDetalle\Delete.cshtml" />
-    <Content Include="Views\PedidoDetalle\Details.cshtml" />
-    <Content Include="Views\PedidoDetalle\Edit.cshtml" />
-    <Content Include="Views\PedidoDetalle\Index.cshtml" />
     <Content Include="Views\Factura\Create.cshtml" />
     <Content Include="Views\Factura\Delete.cshtml" />
     <Content Include="Views\Factura\Details.cshtml" />
@@ -293,6 +288,11 @@
     <Content Include="Views\FacturaDetalle\Details.cshtml" />
     <Content Include="Views\FacturaDetalle\Edit.cshtml" />
     <Content Include="Views\FacturaDetalle\Index.cshtml" />
+    <Content Include="Views\PedidoDetalle\Create.cshtml" />
+    <Content Include="Views\PedidoDetalle\Delete.cshtml" />
+    <Content Include="Views\PedidoDetalle\Details.cshtml" />
+    <Content Include="Views\PedidoDetalle\Edit.cshtml" />
+    <Content Include="Views\PedidoDetalle\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

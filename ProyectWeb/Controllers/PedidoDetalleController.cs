@@ -16,8 +16,8 @@ namespace ProyectWeb.Controllers
         private ProyectoContext db = new ProyectoContext();
         public ActionResult Index()
         {
-            var pedido = db.Pedido.Include(p => p.Cliente);
-            return View(pedido.ToList());
+            var pedidoDetalle = db.PedidoDetalle.Include(p => p.Pedido).Include(p => p.Producto);
+            return View(pedidoDetalle.ToList());
         }
         public ActionResult Details(int? id)
         {
@@ -25,31 +25,33 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pedido pedido = db.Pedido.Find(id);
-            if (pedido == null)
+            PedidoDetalle pedidoDetalle = db.PedidoDetalle.Find(id);
+            if (pedidoDetalle == null)
             {
                 return HttpNotFound();
             }
-            return View(pedido);
+            return View(pedidoDetalle);
         }
         public ActionResult Create()
         {
-            ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Codigo");
+            ViewBag.PedidoId = new SelectList(db.Pedido, "PedidoId", "PedidoId");
+            ViewBag.ProductoId = new SelectList(db.Producto, "ProductoId", "ProductoId");
             return View(new PedidoDetalle());
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PedidoId,ClienteId,FechaCreacion,FechaPedido,Estado,Total,SubTotal,Descuento")] Pedido pedido)
+        public ActionResult Create([Bind(Include = "PedidoDetalleId,PedidoId,FechaCreacion,ProductoId,Precio,Total,SubTotal,Descuento")] PedidoDetalle pedidoDetalle)
         {
             if (ModelState.IsValid)
             {
-                db.Pedido.Add(pedido);
+                db.PedidoDetalle.Add(pedidoDetalle);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Codigo", pedido.ClienteId);
-            return View(pedido);
+            ViewBag.PedidoId = new SelectList(db.Pedido, "PedidoId", "PedidoId", pedidoDetalle.PedidoId);
+            ViewBag.ProductoId = new SelectList(db.Producto, "ProductoId", "ProductoId", pedidoDetalle.ProductoId);
+            return View(pedidoDetalle);
         }
         public ActionResult Edit(int? id)
         {
@@ -57,47 +59,48 @@ namespace ProyectWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pedido pedido = db.Pedido.Find(id);
-            if (pedido == null)
+            PedidoDetalle pedidoDetalle = db.PedidoDetalle.Find(id);
+            if (pedidoDetalle == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Codigo", pedido.ClienteId);
-            return View(pedido);
+            ViewBag.PedidoId = new SelectList(db.Pedido, "PedidoId", "PedidoId", pedidoDetalle.PedidoId);
+            ViewBag.ProductoId = new SelectList(db.Producto, "ProductoId", "ProductoId", pedidoDetalle.ProductoId);
+            return View(pedidoDetalle);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PedidoId,ClienteId,FechaCreacion,FechaPedido,Estado,Total,SubTotal,Descuento")] Pedido pedido)
+        public ActionResult Edit([Bind(Include = "PedidoDetalleId,PedidoId,FechaCreacion,ProductoId,Precio,Total,SubTotal,Descuento")] PedidoDetalle pedidoDetalle)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pedido).State = EntityState.Modified;
+                db.Entry(pedidoDetalle).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Codigo", pedido.ClienteId);
-            return View(pedido);
+            ViewBag.PedidoId = new SelectList(db.Pedido, "PedidoId", "PedidoId", pedidoDetalle.PedidoId);
+            ViewBag.ProductoId = new SelectList(db.Producto, "ProductoId", "ProductoId", pedidoDetalle.ProductoId);
+            return View(pedidoDetalle);
         }
-
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pedido pedido = db.Pedido.Find(id);
-            if (pedido == null)
+            PedidoDetalle pedidoDetalle = db.PedidoDetalle.Find(id);
+            if (pedidoDetalle == null)
             {
                 return HttpNotFound();
             }
-            return View(pedido);
+            return View(pedidoDetalle);
         }
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Pedido pedido = db.Pedido.Find(id);
-            db.Pedido.Remove(pedido);
+            PedidoDetalle pedidoDetalle = db.PedidoDetalle.Find(id);
+            db.PedidoDetalle.Remove(pedidoDetalle);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

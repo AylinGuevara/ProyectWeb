@@ -1,4 +1,4 @@
-﻿@model ProyectWeb.Models.Pedido
+﻿@model ProyectWeb.Models.PedidoDetalle
 
 @{
     ViewBag.Title = "Details";
@@ -11,11 +11,19 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Cliente.Codigo)
+            @Html.DisplayNameFor(model => model.Pedido.PedidoId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Cliente.Codigo)
+            @Html.DisplayFor(model => model.Pedido.PedidoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producto.ProductoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producto.ProductoId)
         </dd>
 
         <dt>
@@ -27,19 +35,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FechaPedido)
+            @Html.DisplayNameFor(model => model.Precio)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FechaPedido)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Estado)
+            @Html.DisplayFor(model => model.Precio)
         </dd>
 
         <dt>

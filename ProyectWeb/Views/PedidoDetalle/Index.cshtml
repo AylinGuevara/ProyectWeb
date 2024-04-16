@@ -12,16 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Cliente.Codigo)
+            @Html.DisplayNameFor(model => model.Pedido.PedidoId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producto.ProductoId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FechaCreacion)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaPedido)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
+            @Html.DisplayNameFor(model => model.Precio)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Total)
@@ -38,16 +38,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Cliente.Codigo)
+            @Html.DisplayFor(modelItem => item.Pedido.PedidoId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Producto.ProductoId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.FechaCreacion)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FechaPedido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
+            @Html.DisplayFor(modelItem => item.Precio)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Total)
@@ -59,9 +59,9 @@
             @Html.DisplayFor(modelItem => item.Descuento)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PedidoId }, new { @class = "btn btn-success" }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PedidoId }, new { @class = "btn btn-warning" }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PedidoId }, new { @class = "btn btn-danger" }))
+            @Html.ActionLink("Edit", "Edit", new { id = item.PedidoId }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Details", "Details", new { id = item.PedidoId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.PedidoId }, new { @class = "btn btn-danger" }))
         </td>
     </tr>
 }
