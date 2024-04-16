@@ -21,7 +21,7 @@ namespace ProyectWeb.Controllers
             return View(cliente.ToList());
         }
 
-        public ActionResult Details(int? id)
+        public ActionResult Detalles(int? id)
         {
             if (id == null)
             {
@@ -58,7 +58,7 @@ namespace ProyectWeb.Controllers
             return View(cliente);
         }
 
-        public ActionResult Edit(int? id)
+        public ActionResult Editar(int? id)
         {
             if (id == null)
             {
@@ -76,7 +76,7 @@ namespace ProyectWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ClienteId,Codigo,Nombres,Apellidos,GrupoDescuentoId,CondicionPagoId,Estado,FechaCreacion")] Cliente cliente)
+        public ActionResult Editar([Bind(Include = "ClienteId,Codigo,Nombres,Apellidos,GrupoDescuentoId,CondicionPagoId,Estado,FechaCreacion")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace ProyectWeb.Controllers
             return View(cliente);
         }
 
-        public ActionResult Delete(int? id)
+        public ActionResult Elimar(int? id)
         {
             if (id == null)
             {
@@ -103,9 +103,9 @@ namespace ProyectWeb.Controllers
             return View(cliente);
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Eliminar")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult EliminarConfirmed(int id)
         {
             Cliente cliente = context.Cliente.Find(id);
             context.Cliente.Remove(cliente);

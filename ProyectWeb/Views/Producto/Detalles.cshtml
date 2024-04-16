@@ -1,7 +1,7 @@
 ﻿@model ProyectWeb.Models.Producto
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles";
 }
 
 <h2>Detalles</h2>
@@ -53,6 +53,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductoId }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Editar", "Editar", new { id = Model.ProductoId }, new { @class = "btn btn-success" }) |
     @Html.ActionLink("Regresar", "Index")
 </p>

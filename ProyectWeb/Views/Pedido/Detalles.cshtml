@@ -1,13 +1,13 @@
-﻿@model ProyectWeb.Models.Factura
+﻿@model ProyectWeb.Models.Pedido
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles";
 }
 
 <h2>Detalles</h2>
 
 <div>
-    <h4>Factura</h4>
+    <h4>Pedido</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -19,14 +19,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Pedido.PedidoId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pedido.PedidoId)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.FechaCreacion)
         </dt>
 
@@ -35,11 +27,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FechaFactura)
+            @Html.DisplayNameFor(model => model.FechaPedido)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FechaFactura)
+            @Html.DisplayFor(model => model.FechaPedido)
         </dd>
 
         <dt>
@@ -77,6 +69,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.FacturaId }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Editar", "Editar", new { id = Model.PedidoId }, new { @class = "btn btn-success" }) |
     @Html.ActionLink("Regresar", "Index")
 </p>

@@ -19,7 +19,7 @@ namespace ProyectWeb.Controllers
             var factura = dbContext.Factura.Include(f => f.Cliente).Include(f => f.Pedido);
             return View(factura.ToList());
         }
-        public ActionResult Details(int? id)
+        public ActionResult Detalles(int? id)
         {
             if (id == null)
             {
@@ -54,7 +54,7 @@ namespace ProyectWeb.Controllers
             ViewBag.PedidoId = new SelectList(dbContext.Pedido, "PedidoId", "PedidoId", factura.PedidoId);
             return View(factura);
         }
-        public ActionResult Edit(int? id)
+        public ActionResult Editar(int? id)
         {
             if (id == null)
             {
@@ -71,7 +71,7 @@ namespace ProyectWeb.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FacturaId,ClienteId,PedidoId,FechaCreacion,FechaFactura,Estado,Total,SubTotal,Descuento")] Factura factura)
+        public ActionResult Editar([Bind(Include = "FacturaId,ClienteId,PedidoId,FechaCreacion,FechaFactura,Estado,Total,SubTotal,Descuento")] Factura factura)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace ProyectWeb.Controllers
             ViewBag.PedidoId = new SelectList(dbContext.Pedido, "PedidoId", "PedidoId", factura.PedidoId);
             return View(factura);
         }
-        public ActionResult Delete(int? id)
+        public ActionResult Eliminar(int? id)
         {
             if (id == null)
             {
@@ -96,7 +96,7 @@ namespace ProyectWeb.Controllers
             }
             return View(factura);
         }
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Eliminar")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

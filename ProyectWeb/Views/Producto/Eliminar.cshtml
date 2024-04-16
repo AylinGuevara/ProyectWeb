@@ -1,30 +1,38 @@
-﻿@model ProyectWeb.Models.UnidadMedida
+﻿@model ProyectWeb.Models.Producto
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Eliminar";
 }
 
 <h2>Eliminar</h2>
 
 <h3>¿Estás segura de que quieres eliminar este campo?</h3>
 <div>
-    <h4>UnidadMedida</h4>
+    <h4>Producto</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Codigo)
+            @Html.DisplayNameFor(model => model.Categoria.Codigo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Codigo)
+            @Html.DisplayFor(model => model.Categoria.Codigo)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
+            @Html.DisplayNameFor(model => model.UnidadMedida.Codigo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Descripcion)
+            @Html.DisplayFor(model => model.UnidadMedida.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCreacion)
         </dd>
 
         <dt>
@@ -36,11 +44,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FechaCreacion)
+            @Html.DisplayNameFor(model => model.PrecioCompra)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FechaCreacion)
+            @Html.DisplayFor(model => model.PrecioCompra)
         </dd>
 
     </dl>

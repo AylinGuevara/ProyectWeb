@@ -102,7 +102,7 @@ namespace ProyectWeb.Controllers
        
         [HttpPost, ActionName("Eliminar")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult EliminarConfirmed(int id)
         {
             Categoria categoria = context.Categoria.Find(id);
             context.Categoria.Remove(categoria);

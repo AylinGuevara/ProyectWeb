@@ -20,7 +20,7 @@ namespace ProyectWeb.Controllers
             return View(dbContext.CondicionPago.ToList());
         }
 
-        public ActionResult Details(int? id)
+        public ActionResult Detalle(int? id)
         {
             if (id == null)
             {

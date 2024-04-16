@@ -1,12 +1,11 @@
 ﻿@model ProyectWeb.Models.Cliente
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Detalles";
 }
 
-<h2>Eliminar</h2>
+<h2>Detalles</h2>
 
-<h3>¿Estás segura de que quieres eliminar este campo?</h3>
 <div>
     <h4>Cliente</h4>
     <hr />
@@ -68,13 +67,8 @@
         </dd>
 
     </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Eliminar"  class="btn btn-default" /> |
-            @Html.ActionLink("Regresar", "Index")
-        </div>
-    }
 </div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.ClienteId }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

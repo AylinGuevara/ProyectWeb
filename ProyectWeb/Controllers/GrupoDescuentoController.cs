@@ -18,7 +18,7 @@ namespace ProyectWeb.Controllers
         {
             return View(Context.GrupoDescuento.ToList());
         }
-        public ActionResult Details(int? id)
+        public ActionResult Detalle(int? id)
         {
             if (id == null)
             {
