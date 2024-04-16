@@ -13,11 +13,11 @@ namespace ProyectWeb.Controllers
 {
     public class CategoriaController : Controller
     {
-        private ProyectoContext context = new ProyectoContext();
+      ProyectoContext context;
 
         public CategoriaController()
         {
-            
+            context = new ProyectoContext();
         }
 
         public ActionResult Index()
