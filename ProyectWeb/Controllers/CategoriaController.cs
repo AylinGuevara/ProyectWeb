@@ -26,7 +26,7 @@ namespace ProyectWeb.Controllers
         }
 
         
-        public ActionResult Detalles(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -61,7 +61,7 @@ namespace ProyectWeb.Controllers
             return View(categoria);
         }
 
-        public ActionResult Editar(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -77,7 +77,7 @@ namespace ProyectWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar([Bind(Include = "CategoriaId,Codigo,Descripcion,Estado,FechaCreacion")] Categoria categoria)
+        public ActionResult Edit([Bind(Include = "CategoriaId,Codigo,Descripcion,Estado,FechaCreacion")] Categoria categoria)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace ProyectWeb.Controllers
         }
 
         
-        public ActionResult Eliminar(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -104,9 +104,9 @@ namespace ProyectWeb.Controllers
         }
 
        
-        [HttpPost, ActionName("Eliminar")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult EliminarConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Categoria categoria = context.Categoria.Find(id);
             context.Categoria.Remove(categoria);

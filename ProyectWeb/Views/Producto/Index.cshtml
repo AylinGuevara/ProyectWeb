@@ -47,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.PrecioCompra)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.ProductoId }, new { @class = "btn btn-success" }) |
-            @Html.ActionLink("Detalles", "Detalles", new { id=item.ProductoId }, new { @class = "btn btn-warning" }) |
-            @Html.ActionLink("Eliminar", "Eliminar", new { id=item.ProductoId }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductoId }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProductoId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProductoId }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

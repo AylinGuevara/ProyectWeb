@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.FechaCreacion)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.CategoriaId }, new { @class = "btn btn-success" }) |
-            @Html.ActionLink("Detalles", "Detalles", new { id=item.CategoriaId }, new { @class = "btn btn-warning" })|
-            @Html.ActionLink("Eliminar", "Eliminar", new { id=item.CategoriaId }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Edit", "Edit", new { id=item.CategoriaId }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CategoriaId }, new { @class = "btn btn-warning" })|
+            @Html.ActionLink("Delete", "Delete", new { id=item.CategoriaId }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

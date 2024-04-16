@@ -1,13 +1,14 @@
-﻿@model ProyectWeb.Models.UnidadMedida
+﻿@model ProyectWeb.Models.Categoria
 
 @{
-    ViewBag.Title = "Detalles";
+    ViewBag.Title = "Delete";
 }
 
-<h2>Detalles</h2>
+<h2>Delete</h2>
 
+<h3>¿Estás segura de que quieres eliminar este campo?</h3>
 <div>
-    <h4>UnidadMedida</h4>
+    <h4>Categoria</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -43,8 +44,13 @@
         </dd>
 
     </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete"  class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Editar", "Editar", new { id = Model.UnidadMedidaId }, new { @class = "btn btn-success" }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

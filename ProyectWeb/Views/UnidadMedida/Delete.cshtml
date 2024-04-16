@@ -1,32 +1,16 @@
-﻿@model ProyectWeb.Models.Cliente
+﻿@model ProyectWeb.Models.UnidadMedida
 
 @{
-    ViewBag.Title = "Eliminar";
+    ViewBag.Title = "Delete";
 }
 
-<h2>Eliminar</h2>
+<h2>Delete</h2>
 
 <h3>¿Estás segura de que quieres eliminar este campo?</h3>
 <div>
-    <h4>Cliente</h4>
+    <h4>UnidadMedida</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CondicionPago.Codigo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CondicionPago.Codigo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GrupoDescuento.Codigo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GrupoDescuento.Codigo)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Codigo)
         </dt>
@@ -36,19 +20,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Nombres)
+            @Html.DisplayNameFor(model => model.Descripcion)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Nombres)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Apellidos)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Apellidos)
+            @Html.DisplayFor(model => model.Descripcion)
         </dd>
 
         <dt>
@@ -73,7 +49,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Eliminar"  class="btn btn-default" /> |
+            <input type="submit" value="Delete"  class="btn btn-default" /> |
             @Html.ActionLink("Regresar", "Index")
         </div>
     }

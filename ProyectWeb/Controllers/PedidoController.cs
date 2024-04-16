@@ -21,7 +21,7 @@ namespace ProyectWeb.Controllers
             return View(pedido.ToList());
         }
 
-        public ActionResult Detalles(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -56,7 +56,7 @@ namespace ProyectWeb.Controllers
             return View(pedido);
         }
 
-        public ActionResult Editar(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -73,7 +73,7 @@ namespace ProyectWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar([Bind(Include = "PedidoId,ClienteId,FechaCreacion,FechaPedido,Estado,Total,SubTotal,Descuento")] Pedido pedido)
+        public ActionResult Edit([Bind(Include = "PedidoId,ClienteId,FechaCreacion,FechaPedido,Estado,Total,SubTotal,Descuento")] Pedido pedido)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace ProyectWeb.Controllers
             return View(pedido);
         }
 
-        public ActionResult Eliminar(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -99,9 +99,9 @@ namespace ProyectWeb.Controllers
             return View(pedido);
         }
 
-        [HttpPost, ActionName("Eliminar")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult EliminarConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Pedido pedido = Context.Pedido.Find(id);
             Context.Pedido.Remove(pedido);

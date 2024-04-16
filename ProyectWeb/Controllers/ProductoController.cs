@@ -20,7 +20,7 @@ namespace ProyectWeb.Controllers
             var producto = Context.Producto.Include(p => p.Categoria).Include(p => p.UnidadMedida);
             return View(producto.ToList());
         }
-        public ActionResult Detalles(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -57,7 +57,7 @@ namespace ProyectWeb.Controllers
             return View(producto);
         }
 
-        public ActionResult Editar(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -75,7 +75,7 @@ namespace ProyectWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar([Bind(Include = "ProductoId,CategoriaId,UnidadMedidaId,FechaCreacion,Estado,PrecioCompra")] Producto producto)
+        public ActionResult Edit([Bind(Include = "ProductoId,CategoriaId,UnidadMedidaId,FechaCreacion,Estado,PrecioCompra")] Producto producto)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace ProyectWeb.Controllers
             return View(producto);
         }
 
-        public ActionResult Eliminar(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -102,9 +102,9 @@ namespace ProyectWeb.Controllers
             return View(producto);
         }
 
-        [HttpPost, ActionName("Eliminar")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult EliminarConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Producto producto = Context.Producto.Find(id);
             Context.Producto.Remove(producto);

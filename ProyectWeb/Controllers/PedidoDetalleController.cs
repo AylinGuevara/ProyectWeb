@@ -19,7 +19,7 @@ namespace ProyectWeb.Controllers
             var pedidoDetalle = db.PedidoDetalle.Include(p => p.Pedido).Include(p => p.Producto);
             return View(pedidoDetalle.ToList());
         }
-        public ActionResult Detalles(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -53,7 +53,7 @@ namespace ProyectWeb.Controllers
             ViewBag.ProductoId = new SelectList(db.Producto, "ProductoId", "ProductoId", pedidoDetalle.ProductoId);
             return View(pedidoDetalle);
         }
-        public ActionResult Editar(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -70,7 +70,7 @@ namespace ProyectWeb.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar([Bind(Include = "PedidoDetalleId,PedidoId,FechaCreacion,ProductoId,Precio,Total,SubTotal,Descuento")] PedidoDetalle pedidoDetalle)
+        public ActionResult Edit([Bind(Include = "PedidoDetalleId,PedidoId,FechaCreacion,ProductoId,Precio,Total,SubTotal,Descuento")] PedidoDetalle pedidoDetalle)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace ProyectWeb.Controllers
             ViewBag.ProductoId = new SelectList(db.Producto, "ProductoId", "ProductoId", pedidoDetalle.ProductoId);
             return View(pedidoDetalle);
         }
-        public ActionResult Eliminar(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -95,9 +95,9 @@ namespace ProyectWeb.Controllers
             }
             return View(pedidoDetalle);
         }
-        [HttpPost, ActionName("Eliminar")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult EliminarConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
             PedidoDetalle pedidoDetalle = db.PedidoDetalle.Find(id);
             db.PedidoDetalle.Remove(pedidoDetalle);

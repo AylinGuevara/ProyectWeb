@@ -1,13 +1,13 @@
-﻿@model ProyectWeb.Models.GrupoDescuento
+﻿@model ProyectWeb.Models.CondicionPago
 
 @{
-    ViewBag.Title = "Detalle";
+    ViewBag.Title = "Details";
 }
 
-<h2>Detalles</h2>
+<h2>Details</h2>
 
 <div>
-    <h4>GrupoDescuento</h4>
+    <h4>CondicionPago</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -35,11 +35,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Porcentaje)
+            @Html.DisplayNameFor(model => model.Dias)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Porcentaje)
+            @Html.DisplayFor(model => model.Dias)
         </dd>
 
         <dt>
@@ -53,6 +53,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.GrupoDescuentoId }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CondicionPagoId }, new { @class = "btn btn-success" }) |
     @Html.ActionLink("Regresar", "Index")
 </p>

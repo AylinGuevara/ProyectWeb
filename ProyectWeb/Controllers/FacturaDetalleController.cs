@@ -23,7 +23,7 @@ namespace ProyectWeb.Controllers
         }
 
         
-        public ActionResult Detalles(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -61,7 +61,7 @@ namespace ProyectWeb.Controllers
             return View(facturaDetalle);
         }
 
-        public ActionResult Editar(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -78,7 +78,7 @@ namespace ProyectWeb.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar([Bind(Include = "FacturaDetalleId,FacturaId,FechaCreacion,ProductoId,Precio,Total,SubTotal,Descuento")] FacturaDetalle facturaDetalle)
+        public ActionResult Edit([Bind(Include = "FacturaDetalleId,FacturaId,FechaCreacion,ProductoId,Precio,Total,SubTotal,Descuento")] FacturaDetalle facturaDetalle)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace ProyectWeb.Controllers
         }
 
         
-        public ActionResult Eliminar(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -107,9 +107,9 @@ namespace ProyectWeb.Controllers
         }
 
         
-        [HttpPost, ActionName("Eliminar")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult EliminarConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
             FacturaDetalle facturaDetalle = db.FacturaDetalle.Find(id);
             db.FacturaDetalle.Remove(facturaDetalle);
