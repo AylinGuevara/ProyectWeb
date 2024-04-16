@@ -8,6 +8,7 @@ namespace ProyectWeb.Models
     public class GrupoDescuento
     {
         [Key]
+        [Display(Name = "Grupo Descuento Id")]
         public int GrupoDescuentoId { get; set; }
 
         [Required]
@@ -25,6 +26,7 @@ namespace ProyectWeb.Models
         public int Porcentaje { get; set; }
 
         [Required]
+        [Display(Name = "Fecha Creacion")]
         public DateTime FechaCreacion { get; set; }
     }
 }

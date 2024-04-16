@@ -11,6 +11,7 @@ namespace ProyectWeb.Models
     public class Categoria
     {
         [Key]
+        [Display(Name = "Categoria Id")]
         public int CategoriaId { get; set; }
         
         [Required]
@@ -25,6 +26,7 @@ namespace ProyectWeb.Models
         public bool Estado { get; set; }
 
         [Required]
+        [Display(Name = "Fecha Creacion")]
         public DateTime FechaCreacion { get; set; }
     }
 }

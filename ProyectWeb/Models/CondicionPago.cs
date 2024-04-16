@@ -8,6 +8,7 @@ namespace ProyectWeb.Models
     public class CondicionPago
     {
         [Key]
+        [Display(Name = "Condicion Pago Id")]
         public int CondicionPagoId { get; set; }
 
         [Required]
@@ -25,6 +26,7 @@ namespace ProyectWeb.Models
         public int Dias { get; set; }
 
         [Required]
+        [Display(Name = "Fecha Creacion")]
         public DateTime FechaCreacion { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace ProyectWeb.Models
 
     {
         [Key]
+        [Display(Name = "Unidad Medida Id")]
         public int UnidadMedidaId { get; set; }
 
         [Required]
@@ -26,6 +27,7 @@ namespace ProyectWeb.Models
         public bool Estado  { get; set; }
 
         [Required]
+        [Display(Name = "Fecha Creacion")]
         public DateTime FechaCreacion { get; set; }
     }
 }
