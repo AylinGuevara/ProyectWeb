@@ -245,9 +245,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\UnidadMedida\Index.cshtml" />
     <Content Include="Views\Categoria\Create.cshtml" />
-    <Content Include="Views\Categoria\Delete.cshtml" />
-    <Content Include="Views\Categoria\Details.cshtml" />
-    <Content Include="Views\Categoria\Edit.cshtml" />
+    <Content Include="Views\Categoria\Eliminar.cshtml" />
+    <Content Include="Views\Categoria\Detalles.cshtml" />
+    <Content Include="Views\Categoria\Editar.cshtml" />
     <Content Include="Views\Categoria\Index.cshtml" />
     <Content Include="Views\UnidadMedida\Create.cshtml" />
     <Content Include="Views\UnidadMedida\Delete.cshtml" />
