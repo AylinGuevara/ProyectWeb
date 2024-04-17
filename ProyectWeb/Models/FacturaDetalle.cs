@@ -20,6 +20,9 @@ namespace ProyectWeb.Models
         public Factura Factura { get; set; }
 
         [Display(Name = "Fecha Creacion")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+
+        [DataType(DataType.Date)]
         public DateTime FechaCreacion { get; set; }
 
         [Display(Name = "Producto Id")]

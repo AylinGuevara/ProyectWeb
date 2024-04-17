@@ -26,6 +26,9 @@ namespace ProyectWeb.Models
         public UnidadMedida UnidadMedida { get; set; }
 
         [Display(Name = "Fecha Creacion")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+
+        [DataType(DataType.Date)]
         public DateTime FechaCreacion { get; set; }
 
         [Required]

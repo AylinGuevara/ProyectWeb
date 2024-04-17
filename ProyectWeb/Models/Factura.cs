@@ -27,8 +27,14 @@ namespace ProyectWeb.Models
         public Pedido Pedido { get; set; }
 
         [Display(Name = "Fecha Creacion")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+
+        [DataType(DataType.Date)]
         public DateTime FechaCreacion { get; set; }
         [Display(Name = "Fecha Factura")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+
+        [DataType(DataType.Date)]
         public DateTime FechaFactura { get; set; }
 
         public bool Estado { get; set; }
