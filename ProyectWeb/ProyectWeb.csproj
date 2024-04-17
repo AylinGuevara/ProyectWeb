@@ -306,6 +306,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
+    <Folder Include="Imagen\" />
     <Folder Include="viewsModels\" />
   </ItemGroup>
   <ItemGroup>
