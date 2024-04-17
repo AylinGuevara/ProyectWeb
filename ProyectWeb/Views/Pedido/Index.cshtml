@@ -59,9 +59,9 @@
             @Html.DisplayFor(modelItem => item.Descuento)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PedidoId }, new { @class = "btn btn-success" }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PedidoId }, new { @class = "btn btn-warning" }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PedidoId }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Editar", "Edit", new { id = item.PedidoId }, new { @class = "btn btn-outline-success" }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.PedidoId }, new { @class = "btn btn-outline-warning" })|
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.PedidoId }, new { @class = "btn btn-outline-danger" })
         </td>
     </tr>
 }
