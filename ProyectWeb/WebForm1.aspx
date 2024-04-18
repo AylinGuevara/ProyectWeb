@@ -10,7 +10,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            
+            <img src="Imagen/Sistema tienda.jpg" />
         </div>
     </form>
 </body>
